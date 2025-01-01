@@ -29,7 +29,6 @@ public class MovieListView extends VerticalLayout {
         movieGrid.addColumn(MovieDTO::getReleaseDate).setHeader("Release Date").setSortable(true);
         movieGrid.addColumn(MovieDTO::getLeadActorId).setHeader("Lead Actor Id").setSortable(true);
         movieGrid.addColumn(MovieDTO::getStudioId).setHeader("Studio Id").setSortable(true);
-        // Add action column for all users
         movieGrid.addComponentColumn(movie -> {
             Button editButton = new Button("Edit", event ->
                     getUI().ifPresent(ui -> ui.navigate("edit-movie/" + movie.getId())));
@@ -41,7 +40,6 @@ public class MovieListView extends VerticalLayout {
             return new HorizontalLayout(editButton, deleteButton);
         }).setHeader("Actions");
 
-        // Add button to navigate to "Add Movie" view
         Button addMovieButton = new Button("Add Movie", e -> {
             getUI().ifPresent(ui -> ui.navigate("add-movie"));
         });

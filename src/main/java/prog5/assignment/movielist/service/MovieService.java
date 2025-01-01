@@ -83,32 +83,25 @@ public class MovieService {
         movieRepository.deleteById(id);
     }
 
-    // New method to handle search for movies based on actor name, studio name, or movie title
     public List<MovieDTO> searchMovies(String query) {
         List<Movie> movies = null;
 
-        // Search for movies by actor name
         List<Actor> actors = actorRepository.findByNameContaining(query);
         if (!actors.isEmpty()) {
-            // For each actor, find movies where they are the lead actor
             movies = actors.stream()
                     .flatMap(actor -> movieRepository.findByLeadActorId(actor.getId()).stream())
                     .collect(Collectors.toList());
         } else {
-            // Search for movies by studio name if no actors found
             List<Studio> studios = studioRepository.findByNameContaining(query);
             if (!studios.isEmpty()) {
-                // For each studio, find movies associated with the studio
                 movies = studios.stream()
                         .flatMap(studio -> movieRepository.findByStudioId(studio.getId()).stream())
                         .collect(Collectors.toList());
             } else {
-                // Finally, search for movies by title
                 movies = movieRepository.searchByTitle(query);
             }
         }
 
-        // Convert the movie entities to DTOs and return
         return movies.stream()
                 .map(movieMapper::toDTO)
                 .collect(Collectors.toList());

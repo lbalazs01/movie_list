@@ -22,13 +22,11 @@ public class StudioListView extends VerticalLayout {
 
         setSizeFull();
 
-        // Initialize the grid with StudioDTO class
         studioGrid = new Grid<>(StudioDTO.class, false);
         studioGrid.addColumn(StudioDTO::getId).setHeader("ID").setSortable(true);
         studioGrid.addColumn(StudioDTO::getName).setHeader("Name").setSortable(true);
         studioGrid.addColumn(StudioDTO::getLocation).setHeader("Location").setSortable(true);
 
-        // Add action buttons for all users
         studioGrid.addComponentColumn(studio -> {
             Button editButton = new Button("Edit", event -> {
                 getUI().ifPresent(ui -> ui.navigate("edit-studio/" + studio.getId()));
@@ -41,7 +39,6 @@ public class StudioListView extends VerticalLayout {
             return new HorizontalLayout(editButton, deleteButton);
         }).setHeader("Actions");
 
-        // Button to navigate to add studio page
         Button addStudioButton = new Button("Add Studio", e -> {
             getUI().ifPresent(ui -> ui.navigate("add-studio"));
         });

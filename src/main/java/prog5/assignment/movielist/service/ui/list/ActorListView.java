@@ -28,7 +28,6 @@ public class ActorListView extends VerticalLayout {
         actorGrid.addColumn(ActorDTO::getGender).setHeader("Gender").setSortable(true);
         actorGrid.addColumn(ActorDTO::getNationality).setHeader("Nationality").setSortable(true);
 
-        // Add action column for all users
         actorGrid.addComponentColumn(actor -> {
             Button editButton = new Button("Edit", event ->
                     getUI().ifPresent(ui -> ui.navigate("edit-actor/" + actor.getId())));
@@ -40,7 +39,6 @@ public class ActorListView extends VerticalLayout {
             return new HorizontalLayout(editButton, deleteButton);
         }).setHeader("Actions");
 
-        // Add button to navigate to "Add Actor" view
         Button addActorButton = new Button("Add Actor", e -> {
             getUI().ifPresent(ui -> ui.navigate("add-actor"));
         });
