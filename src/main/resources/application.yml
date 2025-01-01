@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/movie-list
+    username: movie-list
+    password: 12345678
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.xml
+
+logging:
+  level:
+    org:
+      springframework:
+        jdbc:
+          core: debug
+
+
+server:
+  port: 8881
