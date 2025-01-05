@@ -13,7 +13,3 @@ logging:
       springframework:
         jdbc:
           core: debug
-
-
-server:
-  port: 8881

@@ -1,11 +1,13 @@
 package prog5.assignment.movielist.bean;
-
+// Creating DTO Bean
 public class ActorDTO {
 
     private Long id;
     private String name;
     private String gender;
     private String nationality;
+
+    // Getters and Setters
 
     public Long getId() {
         return id;

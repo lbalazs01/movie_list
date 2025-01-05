@@ -84,24 +84,28 @@ public class MovieService {
     }
 
     public List<MovieDTO> searchMovies(String query) {
+        // search for a movie based on the movie, studio or actor name
         List<Movie> movies = null;
 
         List<Actor> actors = actorRepository.findByNameContaining(query);
+        // check for actor name
         if (!actors.isEmpty()) {
             movies = actors.stream()
                     .flatMap(actor -> movieRepository.findByLeadActorId(actor.getId()).stream())
                     .collect(Collectors.toList());
         } else {
+            // check for studio name
             List<Studio> studios = studioRepository.findByNameContaining(query);
             if (!studios.isEmpty()) {
                 movies = studios.stream()
                         .flatMap(studio -> movieRepository.findByStudioId(studio.getId()).stream())
                         .collect(Collectors.toList());
             } else {
+                // check for movie name
                 movies = movieRepository.searchByTitle(query);
             }
         }
-
+        // return movie based on search
         return movies.stream()
                 .map(movieMapper::toDTO)
                 .collect(Collectors.toList());

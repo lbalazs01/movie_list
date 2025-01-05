@@ -9,10 +9,14 @@ import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.Route;
+import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
 import prog5.assignment.movielist.bean.ActorDTO;
 import prog5.assignment.movielist.service.ActorService;
 
 @Route("edit-actor/:id")
+@RolesAllowed("ADMIN")
+
 public class EditActorView extends VerticalLayout implements BeforeEnterObserver {
 
     private final ActorService actorService;

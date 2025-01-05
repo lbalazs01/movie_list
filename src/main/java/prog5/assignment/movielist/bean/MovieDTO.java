@@ -1,6 +1,7 @@
 package prog5.assignment.movielist.bean;
 
 import java.time.LocalDate;
+// Creating DTO Bean
 
 public class MovieDTO {
 
@@ -11,6 +12,7 @@ public class MovieDTO {
     private Long leadActorId;
     private Long studioId;
 
+    // Getters and Setters
     public Long getId() {
         return id;
     }

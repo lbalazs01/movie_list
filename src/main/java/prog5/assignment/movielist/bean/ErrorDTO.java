@@ -1,4 +1,5 @@
 package prog5.assignment.movielist.bean;
+// Creating DTO Bean
 
 import java.time.LocalDateTime;
 

@@ -1,4 +1,5 @@
 package prog5.assignment.movielist.bean;
+// Creating DTO Bean
 
 public class StudioDTO {
 
@@ -6,6 +7,7 @@ public class StudioDTO {
     private String name;
     private String location;
 
+    // Getters and setters
     public Long getId() {
         return id;
     }

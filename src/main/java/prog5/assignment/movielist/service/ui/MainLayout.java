@@ -11,6 +11,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.server.VaadinService;
+import com.vaadin.flow.server.auth.AnonymousAllowed;
 import jakarta.servlet.http.HttpServletRequest;
 import prog5.assignment.movielist.service.MovieService;
 import prog5.assignment.movielist.bean.MovieDTO;
@@ -20,6 +21,7 @@ import com.vaadin.flow.router.Location;
 import com.vaadin.flow.router.Router;
 
 @Route("")
+@AnonymousAllowed // allow access to all users
 public class MainLayout extends AppLayout {
 
     private MovieService movieService;
@@ -81,6 +83,7 @@ public class MainLayout extends AppLayout {
     }
 
     private void addSearchField(VerticalLayout body) {
+        // adding search field where user can search for actor, movie or studio name and list it out
         TextField searchField = new TextField();
         searchField.setLabel("Search");
         searchField.setPlaceholder("Search by movie, actor, or studio");

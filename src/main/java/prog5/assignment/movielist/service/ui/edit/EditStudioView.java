@@ -8,10 +8,14 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.Route;
+import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
 import prog5.assignment.movielist.bean.StudioDTO;
 import prog5.assignment.movielist.service.StudioService;
 
 @Route("edit-studio/:id")
+@RolesAllowed("ADMIN")
+
 public class EditStudioView extends VerticalLayout implements BeforeEnterObserver {
 
     private final StudioService studioService;

@@ -9,17 +9,3 @@ services:
       - "POSTGRES_PASSWORD=12345678"
     ports:
       - "5432:5432"
-
-  movielist-initdb:
-    depends_on:
-      - postgres
-    image: ghcr.io/onedr0p/postgres-init:16.2
-    environment:
-      - "TZ=Europe/Budapest"
-      - "INIT_POSTGRES_HOST=postgres"
-      - "INIT_POSTGRES_SUPER_PASS=12345678"
-      - "INIT_POSTGRES_USER=movie-list"
-      - "INIT_POSTGRES_PASS=12345678"
-      - "INIT_POSTGRES_DBNAME=movie-list"
-
-
